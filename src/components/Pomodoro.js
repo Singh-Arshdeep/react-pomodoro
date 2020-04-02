@@ -47,16 +47,15 @@ export default function Pomodoro() {
     let handlePause = () => {
         if (timer) {
             clearInterval(timer);
-            timer=null;
+            timer = null;
         }
     }
 
     let handleReset = () => {
-        if (timer) {
-            setPomoTime(25);
-            clearInterval(timer);
-            timer=null;
-        }
+        console.log("heer");
+        setPomoTime(25);
+        clearInterval(timer);
+        timer = null;
     }
 
     return (
@@ -66,12 +65,12 @@ export default function Pomodoro() {
                     <div>Nav</div>
                 </Grid>
                 <Grid item xs={12} className={classes.timer}>
-                    <PomoTimer pomoTime={pomoTime}/>
+                    <PomoTimer pomoTime={pomoTime} />
                 </Grid>
                 <Grid item xs={12} className={classes.actionBtns}>
                     <PomoActionBtns handleStart={handleStart}
-                    handlePause={handlePause}
-                    handleReset={handleReset}/>
+                        handlePause={handlePause}
+                        handleReset={handleReset} />
                 </Grid>
                 <Grid item xs={12} className={classes.infoSection}>
                     <div>Info</div>
