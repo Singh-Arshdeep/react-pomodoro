@@ -79,7 +79,3 @@ export default function Pomodoro() {
         </div>
     );
 }
-
-setTimeout(() => {
-    this.setState({ message: "" });
-}, 2000);
