@@ -18,6 +18,8 @@ const useStyles = makeStyles((theme) => ({
     actionBtns: {
         backgroundColor: 'yellow',
         height: '10vh',
+        width: '50%',
+        margin: 'auto',
     },
     infoSection: {
         backgroundColor: 'pink',
