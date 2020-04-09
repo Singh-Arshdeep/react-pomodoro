@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
         height: '50vh',
     },
     actionBtns: {
-        backgroundColor: 'yellow',
         height: '10vh',
         width: '50%',
         margin: 'auto',
