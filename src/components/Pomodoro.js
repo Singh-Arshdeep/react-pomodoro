@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import PomoTimer from './pomoComponents/PomoTimer';
@@ -33,18 +33,30 @@ let timer;
 export default function Pomodoro() {
     const classes = useStyles();
 
-    const [pomoTime, setPomoTime] = useState(25);
+    const [pomoTimeMin, setPomoTimeMin] = useState(25);
+    const [pomoTimeSec, setPomoTimeSec] = useState(0);
 
     let handleStart = () => {
-        console.log(timer);
+        setPomoTimeSec(60);
         if (!timer) {
             timer = setInterval(() => {
-                setPomoTime((prevState) =>
+                setPomoTimeSec((prevState) =>
                     prevState - 1,
                 );
+
             }, 1000);
         }
     }
+
+    useEffect(() => {
+        console.log(pomoTimeSec);
+        if (pomoTimeSec == 0) {
+            setPomoTimeSec(60);
+            setPomoTimeMin((prevState) => {
+                return prevState - 1
+            });
+        }
+    }, [pomoTimeSec]);
 
     let handlePause = () => {
         if (timer) {
@@ -54,8 +66,8 @@ export default function Pomodoro() {
     }
 
     let handleReset = () => {
-        console.log("heer");
-        setPomoTime(25);
+        setPomoTimeMin(25);
+        setPomoTimeSec(0);
         clearInterval(timer);
         timer = null;
     }
@@ -67,7 +79,7 @@ export default function Pomodoro() {
                     <div>Nav</div>
                 </Grid>
                 <Grid item xs={12} className={classes.timer}>
-                    <PomoTimer pomoTime={pomoTime} />
+                    <PomoTimer pomoTimeMin={pomoTimeMin} pomoTimeSec={pomoTimeSec} />
                 </Grid>
                 <Grid item xs={12} className={classes.actionBtns}>
                     <PomoActionBtns handleStart={handleStart}

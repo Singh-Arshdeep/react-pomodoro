@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import './pomoTimer.css';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -12,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
         height:'100%',
         width:'50%',
         textAlign:'center',
-        backgroundColor:'wheat'
     }
 }));
 
@@ -22,7 +22,16 @@ export default function PomoTimer(props) {
     return(
         <div className={classes.container}>
             <div className={classes.clock}>
-                <span>{props.pomoTime}</span>
+                <div id="countdown">
+                <div id='tiles'>
+                <span>{props.pomoTimeMin}</span>
+                <span>{props.pomoTimeSec}</span>
+                </div>
+                <div className="labels">
+                    <li>Mins</li>
+                    <li>Secs</li>
+                </div>
+                </div>
             </div>
         </div>
     );
